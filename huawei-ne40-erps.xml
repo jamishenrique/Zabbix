@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2021-07-24T00:41:23Z</date>
+    <groups>
+        <group>
+            <name>Templates/Network devices</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Net Huawei ERPS SNMPv2</template>
+            <name>Template Net Huawei ERPS SNMPv2</name>
+            <groups>
+                <group>
+                    <name>Templates/Network devices</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>ERPS</name>
+                </application>
+            </applications>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>ERPS Interface Discovery</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#ETHERPSID},1.3.6.1.4.1.2011.5.25.256.1.4.1.6.1]</snmp_oid>
+                    <key>erpsInterfaceDiscovery</key>
+                    <delay>1d</delay>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>ERPS Interface [{#SNMPINDEX}] - Port Status</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.2011.5.25.256.1.5.1.3.1.{#SNMPINDEX}</snmp_oid>
+                            <key>erpsEthPortStatus[{#SNMPINDEX}]</key>
+                            <delay>5m</delay>
+                            <applications>
+                                <application>
+                                    <name>ERPS</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>Huawei ERPS Interface Port Status</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>ERPS Interface [{#SNMPINDEX}] - Status Signal</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.2011.5.25.256.1.5.1.2.1.{#SNMPINDEX}</snmp_oid>
+                            <key>erpsEthStatusSignal[{#SNMPINDEX}]</key>
+                            <delay>5m</delay>
+                            <applications>
+                                <application>
+                                    <name>ERPS</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>Huawei ERPS Interface Signal Status</name>
+                            </valuemap>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>ERPS Ring Discovery</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#RINGID},1.3.6.1.4.1.2011.5.25.256.1.2.1.2]</snmp_oid>
+                    <key>erpsRingDiscovery</key>
+                    <delay>1d</delay>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>ERPS [{#RINGID}] - Control VLAN</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.2011.5.25.256.1.2.1.4.{#SNMPINDEX}</snmp_oid>
+                            <key>erpsRingControlVLAN[{#RINGID}]</key>
+                            <delay>1d</delay>
+                            <applications>
+                                <application>
+                                    <name>ERPS</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>ERPS [{#RINGID}] - Description</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.2011.5.25.256.1.2.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>erpsRingDescription[{#RINGID}]</key>
+                            <delay>1d</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <applications>
+                                <application>
+                                    <name>ERPS</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>ERPS [{#RINGID}] - Guard Timer</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.2011.5.25.256.1.2.1.7.{#SNMPINDEX}</snmp_oid>
+                            <key>erpsRingGuardTimer[{#RINGID}]</key>
+                            <delay>1d</delay>
+                            <units>csec</units>
+                            <applications>
+                                <application>
+                                    <name>ERPS</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>ERPS [{#RINGID}] - Holdoff Timer</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.2011.5.25.256.1.2.1.8.{#SNMPINDEX}</snmp_oid>
+                            <key>erpsRingHoldoffTimer[{#RINGID}]</key>
+                            <delay>1d</delay>
+                            <units>deciseconds</units>
+                            <applications>
+                                <application>
+                                    <name>ERPS</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>ERPS [{#RINGID}] - R-APS MEL ID</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.2011.5.25.256.1.2.1.10.{#SNMPINDEX}</snmp_oid>
+                            <key>erpsRingRAPSMEL[{#RINGID}]</key>
+                            <delay>1d</delay>
+                            <applications>
+                                <application>
+                                    <name>ERPS</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>ERPS [{#RINGID}] - Ring Revertive Mode</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.2011.5.25.256.1.2.1.12.{#SNMPINDEX}</snmp_oid>
+                            <key>erpsRingRevertiveMode[{#RINGID}]</key>
+                            <delay>1d</delay>
+                            <applications>
+                                <application>
+                                    <name>ERPS</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>Huawei ERPS Ring Revertive Mode</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>ERPS [{#RINGID}] - Ring State</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.2011.5.25.256.1.3.1.4.{#SNMPINDEX}</snmp_oid>
+                            <key>erpsRingState[{#RINGID}]</key>
+                            <delay>30s</delay>
+                            <history>7d</history>
+                            <applications>
+                                <application>
+                                    <name>ERPS</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>Huawei ERPS Ring Sate</name>
+                            </valuemap>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}=2 or {last()}=5</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}=1</recovery_expression>
+                                    <name>Changed State in the Optical Ring</name>
+                                    <opdata>Current State: {ITEM.LASTVALUE1}</opdata>
+                                    <priority>AVERAGE</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>ERPS [{#RINGID}] - Topology Last Change</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.2011.5.25.256.1.3.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>erpsRingTopoLastChange[{#RINGID}]</key>
+                            <delay>5m</delay>
+                            <units>uptime</units>
+                            <applications>
+                                <application>
+                                    <name>ERPS</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <params>0.01</params>
+                                </step>
+                            </preprocessing>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>ERPS [{#RINGID}] - Ring Version</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.2011.5.25.256.1.2.1.11.{#SNMPINDEX}</snmp_oid>
+                            <key>erpsRingVersion[{#RINGID}]</key>
+                            <delay>1d</delay>
+                            <applications>
+                                <application>
+                                    <name>ERPS</name>
+                                </application>
+                            </applications>
+                            <valuemap>
+                                <name>Huawei ERPS Ring Version</name>
+                            </valuemap>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>ERPS [{#RINGID}] - WTR Timer</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.2011.5.25.256.1.2.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>erpsRingWTRTimer[{#RINGID}]</key>
+                            <delay>1d</delay>
+                            <units>min</units>
+                            <applications>
+                                <application>
+                                    <name>ERPS</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+    <value_maps>
+        <value_map>
+            <name>Huawei ERPS Interface Port Status</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Discarding</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>Forwarding</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>Huawei ERPS Interface Signal Status</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Failed</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>Non-Failed</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>Huawei ERPS Ring Revertive Mode</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Revertive</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>Non-Revertive</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>Huawei ERPS Ring Sate</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>Idle</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>Protection</newvalue>
+                </mapping>
+                <mapping>
+                    <value>3</value>
+                    <newvalue>Manual Switch</newvalue>
+                </mapping>
+                <mapping>
+                    <value>4</value>
+                    <newvalue>Forced Switch</newvalue>
+                </mapping>
+                <mapping>
+                    <value>5</value>
+                    <newvalue>Pending</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+        <value_map>
+            <name>Huawei ERPS Ring Version</name>
+            <mappings>
+                <mapping>
+                    <value>1</value>
+                    <newvalue>ERPSv1</newvalue>
+                </mapping>
+                <mapping>
+                    <value>2</value>
+                    <newvalue>ERPSv2</newvalue>
+                </mapping>
+            </mappings>
+        </value_map>
+    </value_maps>
+</zabbix_export>
