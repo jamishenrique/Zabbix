@@ -1,4 +1,4 @@
-# Zabbix Templates
+# Zabbix & Grafana Templates
 Repositório pessoal de templates, criados para Zabbix.<br>
 Os templates podem ter sido desenvolvidos do zero ou a partir de algum preexistente!<br>
 
